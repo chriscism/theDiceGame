@@ -53,6 +53,10 @@ public class Controlador {
         return estaciones;
     }
 
+    public EstacionDeTrabajo getEstacion(int index){
+        return estaciones.get(index);
+    }
+
     public void setEstaciones(List<EstacionDeTrabajo> estaciones) {
         this.estaciones = estaciones;
     }
