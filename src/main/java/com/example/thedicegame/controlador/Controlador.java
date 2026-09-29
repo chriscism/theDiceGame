@@ -49,4 +49,27 @@ public class Controlador {
         }
     }
 
+    public List<EstacionDeTrabajo> getEstaciones() {
+        return estaciones;
+    }
+
+    public void setEstaciones(List<EstacionDeTrabajo> estaciones) {
+        this.estaciones = estaciones;
+    }
+
+    public int getBolitasProcesadas() {
+        return bolitasProcesadas;
+    }
+
+    public void setBolitasProcesadas(int bolitasProcesadas) {
+        this.bolitasProcesadas = bolitasProcesadas;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
 }
