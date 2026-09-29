@@ -31,14 +31,16 @@ public class EstacionDeTrabajo {
     public List<ObjetoDeTrabajo> pasarBolitas(int numBolitas){
         ArrayList<ObjetoDeTrabajo> bolitas = new ArrayList<>();
         for(int i = 0; i < numBolitas; i++){
-            bolitas.add(estacion.eliminarDato());
+            ObjetoDeTrabajo objeto = estacion.eliminarDato();
+            if(objeto == null) break; // por si el dado sale mayor que el numero de bolitas que hay en la estacion
+            bolitas.add(objeto);
         }
         return  bolitas;
     }
 
-    public void recibirBolitas(int numBolitas){
-        for(int i = 0; i < numBolitas; i++){
-            estacion.insertarDato(new ObjetoDeTrabajo());
+    public void recibirBolitas(List<ObjetoDeTrabajo> bolitas){
+        for(int i = 0; i < bolitas.size(); i++){
+            estacion.insertarDato(bolitas.get(i));
         }
     }
 
