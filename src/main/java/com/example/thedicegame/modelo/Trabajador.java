@@ -1,5 +1,5 @@
 package com.example.thedicegame.modelo;
 
 public class Trabajador {
-    // en proceso
+    private ColaCircular<ObjetoDeTrabajo> estacion;
 }
