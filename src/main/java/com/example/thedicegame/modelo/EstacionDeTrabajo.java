@@ -44,7 +44,12 @@ public class EstacionDeTrabajo {
         }
     }
 
-    private int obtenerSumatoriaDeLosDados(){
+    public void recibirBolitas(int numBolitas){
+        for(int i = 0; i < numBolitas; i++)
+            estacion.insertarDato(new ObjetoDeTrabajo());
+    }
+
+    public int obtenerSumatoriaDeLosDados(){
         return  dados.stream().mapToInt(Dado::getValorActual).reduce(0, Integer::sum);
     }
 }
