@@ -16,11 +16,15 @@ public class Controlador {
         estaciones = new ArrayList<>();
         bolitasProcesadas = 0;
         round = 0;
-
-
         for (int i = 0; i < 10; i++) {
             estaciones.add(new EstacionDeTrabajo());
         }
+        distribucionInicialDeBolitas();
+    }
+
+    public void distribucionInicialDeBolitas(){
+        for(int i = 1; i < estaciones.size(); i++)
+            estaciones.get(i).recibirBolitas(4);
     }
 
     public void ronda(){
