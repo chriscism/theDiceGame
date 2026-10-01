@@ -4,11 +4,11 @@ import com.example.thedicegame.controlador.Controlador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderImage;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class VistaJuego extends BorderPane {
     private Controlador controlador;
@@ -48,5 +48,21 @@ public class VistaJuego extends BorderPane {
             labelTurno.setText("Turns\n" + controlador.getRound());
             System.out.println("Ronda " + controlador.getRound() + " completada.");
         });
+
+        menu.getChildren().addAll(btnActivity, btnThroughput, btnSystemNum, btnSystemTime, new Region(), labelTurno, btnRoll);
+        VBox.setVgrow(menu.getChildren().get(4), Priority.ALWAYS);
+        return  menu;
+    }
+
+    private GridPane tableroDeJuego(){return null;};
+
+    private VBox  crearEstacionesProvisionales(){
+        VBox caja = new VBox(5);
+        caja.setAlignment(Pos.CENTER);
+
+        Rectangle dibujoDelMonito = new Rectangle(50, 50, Color.LIGHTBLUE);
+
+        caja.getChildren().addAll(dibujoDelMonito);
+        return caja;
     }
 }
