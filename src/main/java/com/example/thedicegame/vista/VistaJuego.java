@@ -170,4 +170,26 @@ public class VistaJuego extends BorderPane {
         Circle bolita = new Circle(5, Color.BLUE);
         return  bolita;
     }
+
+    public VBox dibujarBolitasAcumuladas(){
+        VBox caja = new VBox(5);
+        caja.setAlignment(Pos.BOTTOM_LEFT);
+        FlowPane contenedorBolitas = new FlowPane();
+        contenedorBolitas.setAlignment(Pos.CENTER);
+        contenedorBolitas.setHgap(3);
+        contenedorBolitas.setVgap(3);
+        contenedorBolitas.setPrefWrapLength(140);
+        contenedorBolitas.setMinHeight(60);
+        Runnable acumularBolitas = () -> {
+            contenedorBolitas.getChildren().clear();
+            int totalProcesado = controlador.getBolitasProcesadas();
+            for (int i = 0; i < totalProcesado; i++) {
+                contenedorBolitas.getChildren().add(dibujarBolita());
+            }
+        };
+        actualizadoresDePantalla.add(acumularBolitas);
+        acumularBolitas.run();
+        caja.getChildren().addAll(contenedorBolitas);
+        return caja;
+    }
 }
