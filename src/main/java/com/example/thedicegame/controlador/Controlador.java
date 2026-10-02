@@ -32,9 +32,12 @@ public class Controlador {
     public void meterDado(){
         dadosDisponiblesParaAsignar++;
     }
-    public void tomarDado(){
-        if(puedoMoverDados())
+    public boolean tomarDado(){
+        if(puedoMoverDados()) {
             dadosDisponiblesParaAsignar--;
+            return  true;
+        }
+        return  false;
     }
     public void distribucionInicialDeBolitas(){
         for(int i = 1; i < estaciones.size(); i++)
