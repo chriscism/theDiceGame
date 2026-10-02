@@ -82,11 +82,11 @@ public class VistaJuego extends BorderPane {
         grid.add(crearEstacion(2), 2, 0);
         grid.add(crearEstacion(3), 3, 0);
         grid.add(crearEstacion(4), 3, 1);
-        grid.add(crearEstacion(5), 0, 1);
-        grid.add(crearEstacion(6), 0, 2);
-        grid.add(crearEstacion(7), 3, 2);
-        grid.add(crearEstacion(8), 1, 2);
-        grid.add(crearEstacion(9), 2, 2);
+        grid.add(crearEstacion(5), 3, 2);
+        grid.add(crearEstacion(6), 2, 2);
+        grid.add(crearEstacion(7), 1, 2);
+        grid.add(crearEstacion(8), 0, 2);
+        grid.add(crearEstacion(9), 0, 1);
 
         return  grid;
     }
@@ -154,8 +154,10 @@ public class VistaJuego extends BorderPane {
         });
         botonmas.setOnAction(event -> {
             if (controlador.tomarDado()) {
-                estacion.anadirDado(new Dado());
+                Dado nuevoDado = new Dado();
+                estacion.anadirDado(nuevoDado);
                 actualizarDados.run();
+                nuevoDado.lanzar();
             }
         });
         HBox controles = new HBox(5, botonmas, botonMenos);
