@@ -11,6 +11,7 @@ public class Controlador {
     private List<EstacionDeTrabajo> estaciones;
     private int bolitasProcesadas;
     private int round;
+    private int dadosDisponiblesParaAsignar;
 
     public Controlador() {
         estaciones = new ArrayList<>();
