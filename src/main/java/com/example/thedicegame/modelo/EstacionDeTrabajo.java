@@ -17,6 +17,17 @@ public class EstacionDeTrabajo {
         return estacion;
     }
 
+    public void anadirDado(Dado dado){
+        dados.add(dado);
+    }
+
+    public boolean quitarDado(){
+        if(!dados.isEmpty()){
+            dados.removeLast();
+            return true;
+        }
+        return false;
+    }
     public void setEstacion(ColaCircular<ObjetoDeTrabajo> estacion) {
         this.estacion = estacion;
     }
