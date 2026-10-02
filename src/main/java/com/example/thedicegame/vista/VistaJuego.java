@@ -88,6 +88,8 @@ public class VistaJuego extends BorderPane {
         grid.add(crearEstacion(8), 0, 2);
         grid.add(crearEstacion(9), 0, 1);
 
+        grid.add(dibujarBolitasAcumuladas(), 0, 3, 2, 1);
+
         return  grid;
     }
 
@@ -175,7 +177,7 @@ public class VistaJuego extends BorderPane {
         VBox caja = new VBox(5);
         caja.setAlignment(Pos.BOTTOM_LEFT);
         FlowPane contenedorBolitas = new FlowPane();
-        contenedorBolitas.setAlignment(Pos.CENTER);
+        contenedorBolitas.setAlignment(Pos.BOTTOM_LEFT);
         contenedorBolitas.setHgap(3);
         contenedorBolitas.setVgap(3);
         contenedorBolitas.setPrefWrapLength(140);
