@@ -5,7 +5,6 @@ import java.util.List;
 
 public class EstacionDeTrabajo {
     private ColaCircular<ObjetoDeTrabajo> estacion;
-    int cantidadDeDados;
     private ArrayList<Dado> dados;
 
     public EstacionDeTrabajo(){
@@ -51,5 +50,9 @@ public class EstacionDeTrabajo {
 
     public int obtenerSumatoriaDeLosDados(){
         return  dados.stream().mapToInt(Dado::getValorActual).reduce(0, Integer::sum);
+    }
+
+    public int getCantidadDeDados(){
+        return dados.size();
     }
 }
