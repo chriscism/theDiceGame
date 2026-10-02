@@ -53,11 +53,13 @@ public class VistaJuego extends BorderPane {
         btnSystemTime.setMaxWidth(Double.MAX_VALUE);
 
         btnRoll.setOnAction(e -> {
-            controlador.ronda();
-            labelTurno.setText("TURNO:\n" + controlador.getRound());
-            System.out.println("Ronda " + controlador.getRound() + " completada.");
-            for (Runnable actualizador : actualizadoresDePantalla) {
-                actualizador.run();
+            if(controlador.getRound()< 20) {
+                controlador.ronda();
+                labelTurno.setText("TURNO:\n" + controlador.getRound());
+                System.out.println("Ronda " + controlador.getRound() + " completada.");
+                for (Runnable actualizador : actualizadoresDePantalla) {
+                    actualizador.run();
+                }
             }
         });
 
