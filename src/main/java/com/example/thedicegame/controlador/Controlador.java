@@ -46,7 +46,7 @@ public class Controlador {
 
     public void ronda(){
         round++;
-        for (int i = estaciones.size() - 1; i >= 0; i--) {
+        for (int i = 0; i < estaciones.size(); i++) {
             EstacionDeTrabajo estacionActual = estaciones.get(i);
             int bolitasAPasar = estacionActual.tirarDados();
 
