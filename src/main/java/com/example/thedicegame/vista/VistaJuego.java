@@ -76,6 +76,7 @@ public class VistaJuego extends BorderPane {
         return  grid;
     }
 
+    // NO PUEDO CAMBIAR LOS RECTANGULOS POR EMOJIS, LUEGO LO REVISO
     private VBox  crearEstacionesProvisionales(){
         VBox caja = new VBox(5);
         caja.setAlignment(Pos.CENTER);
