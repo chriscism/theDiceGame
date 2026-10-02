@@ -86,4 +86,15 @@ public class VistaJuego extends BorderPane {
         caja.getChildren().addAll(dibujoDelMonito);
         return caja;
     }
+
+    private StackPane generarDados(){
+        StackPane dado = new StackPane();
+        Rectangle fondo = new Rectangle(30, 30, Color.RED);
+        fondo.setArcWidth(8);
+        fondo.setArcHeight(8);
+
+        javafx.scene.shape.Circle punto = new javafx.scene.shape.Circle(4, Color.WHITE);
+        dado.getChildren().addAll(fondo, punto);
+        return dado;
+    }
 }
