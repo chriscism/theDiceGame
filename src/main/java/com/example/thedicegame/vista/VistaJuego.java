@@ -110,14 +110,6 @@ public class VistaJuego extends BorderPane {
         Rectangle fondo = new Rectangle(30, 30, Color.RED);
         fondo.setArcWidth(8);
         fondo.setArcHeight(8);
-
-        FlowPane contenedorBolitas = new FlowPane();
-        contenedorBolitas.setAlignment(Pos.CENTER);
-        contenedorBolitas.setHgap(3);
-        contenedorBolitas.setVgap(3);
-        contenedorBolitas.setPrefWrapLength(60);
-        contenedorBolitas.setMinHeight(30);
-
         Text textoValor = new Text(String.valueOf(dado.getValorActual()));
         textoValor.setStyle("-fx-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;");
         dadoContenedor.getChildren().addAll(fondo, textoValor);
@@ -132,12 +124,22 @@ public class VistaJuego extends BorderPane {
         HBox contenedorDados = new HBox(5);
         contenedorDados.setAlignment(Pos.CENTER);
         contenedorDados.setPrefHeight(40);
-
+        FlowPane contenedorBolitas = new FlowPane();
+        contenedorBolitas.setAlignment(Pos.CENTER);
+        contenedorBolitas.setHgap(3);
+        contenedorBolitas.setVgap(3);
+        contenedorBolitas.setPrefWrapLength(60);
+        contenedorBolitas.setMinHeight(30);
         Runnable actualizarDados = () -> {
             contenedorDados.getChildren().clear();
             for(Dado d:estacion.getDados()){
                 contenedorDados.getChildren().add(generarDados(d));
             }
+            contenedorBolitas.getChildren().clear();
+            for(int i = 0; i < estacion.getEstacion().getTamano()){
+                contenedorBolitas.getChildren().add(dibujarBolita());
+            }
+
         };
         actualizadoresDePantalla.add(actualizarDados);
         actualizarDados.run();
