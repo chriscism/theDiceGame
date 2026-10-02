@@ -13,6 +13,8 @@ public class EstacionDeTrabajo {
         dados.add(new Dado());
     }
 
+
+
     public ColaCircular<ObjetoDeTrabajo> getEstacion() {
         return estacion;
     }
@@ -65,5 +67,9 @@ public class EstacionDeTrabajo {
 
     public int getCantidadDeDados(){
         return dados.size();
+    }
+
+    public List<Dado> getDados(){
+        return dados;
     }
 }
