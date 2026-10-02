@@ -136,7 +136,7 @@ public class VistaJuego extends BorderPane {
                 contenedorDados.getChildren().add(generarDados(d));
             }
             contenedorBolitas.getChildren().clear();
-            for(int i = 0; i < estacion.getEstacion().getTamano()){
+            for(int i = 0; i < estacion.getEstacion().getTamano(); i++){
                 contenedorBolitas.getChildren().add(dibujarBolita());
             }
 
@@ -160,7 +160,7 @@ public class VistaJuego extends BorderPane {
         });
         HBox controles = new HBox(5, botonmas, botonMenos);
         controles.setAlignment(Pos.CENTER);
-        caja.getChildren().addAll(contenedorDados, controles);
+        caja.getChildren().addAll(contenedorDados, contenedorBolitas, controles);
         return caja;
     }
 
