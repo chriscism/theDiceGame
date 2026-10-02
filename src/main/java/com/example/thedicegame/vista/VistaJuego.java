@@ -1,6 +1,7 @@
 package com.example.thedicegame.vista;
 
 import com.example.thedicegame.controlador.Controlador;
+import com.example.thedicegame.modelo.EstacionDeTrabajo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -62,21 +63,22 @@ public class VistaJuego extends BorderPane {
         grid.setVgap(40);
         grid.setStyle("-fx-background-color: #e8e4d9;");
 
-        grid.add(crearEstacionesProvisionales(), 0, 0);
-        grid.add(crearEstacionesProvisionales(), 1, 0);
-        grid.add(crearEstacionesProvisionales(), 2, 0);
-        grid.add(crearEstacionesProvisionales(), 3, 0);
-        grid.add(crearEstacionesProvisionales(), 3, 1);
-        grid.add(crearEstacionesProvisionales(), 0, 1);
-        grid.add(crearEstacionesProvisionales(), 0, 2);
-        grid.add(crearEstacionesProvisionales(), 3, 2);
-        grid.add(crearEstacionesProvisionales(), 1, 2);
-        grid.add(crearEstacionesProvisionales(), 2, 2);
+        grid.add(crearEstacion(0), 0, 0);
+        grid.add(crearEstacion(1), 1, 0);
+        grid.add(crearEstacion(2), 2, 0);
+        grid.add(crearEstacion(3), 3, 0);
+        grid.add(crearEstacion(4), 3, 1);
+        grid.add(crearEstacion(5), 0, 1);
+        grid.add(crearEstacion(6), 0, 2);
+        grid.add(crearEstacion(7), 3, 2);
+        grid.add(crearEstacion(8), 1, 2);
+        grid.add(crearEstacion(9), 2, 2);
 
         return  grid;
     }
 
     // NO PUEDO CAMBIAR LOS RECTANGULOS POR EMOJIS, LUEGO LO REVISO
+    /*
     private VBox  crearEstacionesProvisionales(){
         VBox caja = new VBox(5);
         caja.setAlignment(Pos.CENTER);
@@ -87,6 +89,8 @@ public class VistaJuego extends BorderPane {
         return caja;
     }
 
+     */
+
     private StackPane generarDados(){
         StackPane dado = new StackPane();
         Rectangle fondo = new Rectangle(30, 30, Color.RED);
@@ -96,5 +100,25 @@ public class VistaJuego extends BorderPane {
         javafx.scene.shape.Circle punto = new javafx.scene.shape.Circle(4, Color.WHITE);
         dado.getChildren().addAll(fondo, punto);
         return dado;
+    }
+
+    private VBox crearEstacion(int index){
+        VBox caja = new VBox(5);
+        caja.setAlignment(Pos.CENTER);
+
+        EstacionDeTrabajo estacion = controlador.getEstacion(index);
+        HBox contenedorDados = new HBox(5);
+        contenedorDados.setAlignment(Pos.CENTER);
+        contenedorDados.setPrefHeight(40);
+
+        Runnable actualizarDados = () -> {
+            contenedorDados.getChildren().clear();
+            for (int i = 0; i < estacion.getCantidadDeDados(); i++) {
+                contenedorDados.getChildren().add(generarDados());
+            }
+        };
+        actualizarDados.run();
+        caja.getChildren().addAll(contenedorDados);
+        return caja;
     }
 }
