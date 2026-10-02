@@ -55,7 +55,7 @@ public class VistaJuego extends BorderPane {
         btnSystemTime.setMaxWidth(Double.MAX_VALUE);
 
         btnRoll.setOnAction(e -> {
-            if(controlador.getRound()< 20) {
+            if(!controlador.yaAcabo()) {
                 controlador.ronda();
                 labelTurno.setText("TURNO:\n" + controlador.getRound());
                 System.out.println("Ronda " + controlador.getRound() + " completada.");

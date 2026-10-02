@@ -98,4 +98,8 @@ public class Controlador {
         this.round = round;
     }
 
+    public boolean yaAcabo(){
+        return round >= 20;
+    }
+
 }
