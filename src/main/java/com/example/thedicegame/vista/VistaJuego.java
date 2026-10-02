@@ -1,6 +1,7 @@
 package com.example.thedicegame.vista;
 
 import com.example.thedicegame.controlador.Controlador;
+import com.example.thedicegame.modelo.Dado;
 import com.example.thedicegame.modelo.EstacionDeTrabajo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,12 +11,18 @@ import javafx.scene.layout.*;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VistaJuego extends BorderPane {
     private Controlador controlador;
     private Label labelTurno;
+    private List<Runnable> actualizadoresDePantalla;
 
     public VistaJuego(){
+        actualizadoresDePantalla = new ArrayList<>();
         controlador = new Controlador();
         labelTurno = new Label("Turno: ");
         labelTurno.setStyle("-fx-text-fill: white;" +
@@ -47,8 +54,11 @@ public class VistaJuego extends BorderPane {
 
         btnRoll.setOnAction(e -> {
             controlador.ronda();
-            labelTurno.setText("Turns\n" + controlador.getRound());
+            labelTurno.setText("TURNO:\n" + controlador.getRound());
             System.out.println("Ronda " + controlador.getRound() + " completada.");
+            for (Runnable actualizador : actualizadoresDePantalla) {
+                actualizador.run();
+            }
         });
 
         menu.getChildren().addAll(btnActivity, btnThroughput, btnSystemNum, btnSystemTime, new Region(), labelTurno, btnRoll);
@@ -91,15 +101,16 @@ public class VistaJuego extends BorderPane {
 
      */
 
-    private StackPane generarDados(){
-        StackPane dado = new StackPane();
+    private StackPane generarDados(Dado dado) {
+        StackPane dadoContenedor = new StackPane();
         Rectangle fondo = new Rectangle(30, 30, Color.RED);
         fondo.setArcWidth(8);
         fondo.setArcHeight(8);
 
-        javafx.scene.shape.Circle punto = new javafx.scene.shape.Circle(4, Color.WHITE);
-        dado.getChildren().addAll(fondo, punto);
-        return dado;
+        Text textoValor = new Text(String.valueOf(dado.getValorActual()));
+        textoValor.setStyle("-fx-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;");
+        dadoContenedor.getChildren().addAll(fondo, textoValor);
+        return dadoContenedor;
     }
 
     private VBox crearEstacion(int index){
@@ -114,11 +125,29 @@ public class VistaJuego extends BorderPane {
         Runnable actualizarDados = () -> {
             contenedorDados.getChildren().clear();
             for (int i = 0; i < estacion.getCantidadDeDados(); i++) {
-                contenedorDados.getChildren().add(generarDados());
+                contenedorDados.getChildren().add(generarDados(new Dado()));
             }
         };
+        actualizadoresDePantalla.add(actualizarDados);
         actualizarDados.run();
-        caja.getChildren().addAll(contenedorDados);
+        Button botonmas = new Button("+");
+        Button botonMenos = new Button("-");
+        botonMenos.setOnAction(event -> {
+            if (estacion.getCantidadDeDados() > 0) {
+                estacion.quitarDado();
+                controlador.meterDado();
+                actualizarDados.run();
+            }
+        });
+        botonmas.setOnAction(event -> {
+            if (controlador.tomarDado()) {
+                estacion.anadirDado(new Dado());
+                actualizarDados.run();
+            }
+        });
+        HBox controles = new HBox(5, botonmas, botonMenos);
+        controles.setAlignment(Pos.CENTER);
+        caja.getChildren().addAll(contenedorDados, controles);
         return caja;
     }
 }
