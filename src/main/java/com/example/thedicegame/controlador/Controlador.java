@@ -97,4 +97,5 @@ public class Controlador {
     public void setRound(int round) {
         this.round = round;
     }
+
 }
