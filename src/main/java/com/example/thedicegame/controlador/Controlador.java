@@ -11,18 +11,31 @@ public class Controlador {
     private List<EstacionDeTrabajo> estaciones;
     private int bolitasProcesadas;
     private int round;
+    //estas son los dados que puedo mover
     private int dadosDisponiblesParaAsignar;
 
     public Controlador() {
         estaciones = new ArrayList<>();
         bolitasProcesadas = 0;
         round = 0;
+        dadosDisponiblesParaAsignar = 0; // en la primera ronda todos los dados estan asignados en una estacion particular
         for (int i = 0; i < 10; i++) {
             estaciones.add(new EstacionDeTrabajo());
         }
         distribucionInicialDeBolitas();
     }
 
+    public boolean puedoMoverDados(){
+        return dadosDisponiblesParaAsignar > 0;
+    }
+
+    public void meterDado(){
+        dadosDisponiblesParaAsignar++;
+    }
+    public void tomarDado(){
+        if(puedoMoverDados())
+            dadosDisponiblesParaAsignar--;
+    }
     public void distribucionInicialDeBolitas(){
         for(int i = 1; i < estaciones.size(); i++)
             estaciones.get(i).recibirBolitas(4);
