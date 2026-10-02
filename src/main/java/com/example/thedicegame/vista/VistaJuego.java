@@ -20,7 +20,8 @@ public class VistaJuego extends BorderPane {
         labelTurno.setStyle("-fx-text-fill: white;" +
                 " -fx-font-size: 16px;" +
                 " -fx-text-alignment: center;");
-
+        setRight(crearParteDerecha());
+        setCenter(tableroDeJuego());
     }
 
     private VBox crearParteDerecha(){
@@ -54,7 +55,26 @@ public class VistaJuego extends BorderPane {
         return  menu;
     }
 
-    private GridPane tableroDeJuego(){return null;};
+    private GridPane tableroDeJuego(){
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(30);
+        grid.setVgap(40);
+        grid.setStyle("-fx-background-color: #e8e4d9;");
+
+        grid.add(crearEstacionesProvisionales(), 0, 0);
+        grid.add(crearEstacionesProvisionales(), 1, 0);
+        grid.add(crearEstacionesProvisionales(), 2, 0);
+        grid.add(crearEstacionesProvisionales(), 3, 0);
+        grid.add(crearEstacionesProvisionales(), 3, 1);
+        grid.add(crearEstacionesProvisionales(), 0, 1);
+        grid.add(crearEstacionesProvisionales(), 0, 2);
+        grid.add(crearEstacionesProvisionales(), 3, 2);
+        grid.add(crearEstacionesProvisionales(), 1, 2);
+        grid.add(crearEstacionesProvisionales(), 2, 2);
+
+        return  grid;
+    }
 
     private VBox  crearEstacionesProvisionales(){
         VBox caja = new VBox(5);
