@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Flow;
 
 public class VistaJuego extends BorderPane {
     private Controlador controlador;
@@ -109,6 +110,13 @@ public class VistaJuego extends BorderPane {
         Rectangle fondo = new Rectangle(30, 30, Color.RED);
         fondo.setArcWidth(8);
         fondo.setArcHeight(8);
+
+        FlowPane contenedorBolitas = new FlowPane();
+        contenedorBolitas.setAlignment(Pos.CENTER);
+        contenedorBolitas.setHgap(3);
+        contenedorBolitas.setVgap(3);
+        contenedorBolitas.setPrefWrapLength(60);
+        contenedorBolitas.setMinHeight(30);
 
         Text textoValor = new Text(String.valueOf(dado.getValorActual()));
         textoValor.setStyle("-fx-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;");
