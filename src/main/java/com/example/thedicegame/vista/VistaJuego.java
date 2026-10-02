@@ -124,8 +124,8 @@ public class VistaJuego extends BorderPane {
 
         Runnable actualizarDados = () -> {
             contenedorDados.getChildren().clear();
-            for (int i = 0; i < estacion.getCantidadDeDados(); i++) {
-                contenedorDados.getChildren().add(generarDados(new Dado()));
+            for(Dado d:estacion.getDados()){
+                contenedorDados.getChildren().add(generarDados(d));
             }
         };
         actualizadoresDePantalla.add(actualizarDados);
