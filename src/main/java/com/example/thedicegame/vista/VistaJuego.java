@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -151,5 +152,10 @@ public class VistaJuego extends BorderPane {
         controles.setAlignment(Pos.CENTER);
         caja.getChildren().addAll(contenedorDados, controles);
         return caja;
+    }
+
+    public Circle dibujarBolita(){
+        Circle bolita = new Circle(5, Color.BLUE);
+        return  bolita;
     }
 }
