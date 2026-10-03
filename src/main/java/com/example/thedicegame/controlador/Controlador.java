@@ -68,13 +68,6 @@ public class Controlador {
             } else {
                 estaciones.get(i + 1).recibirBolitas(bolitas);
             }
-            // como es la ultima estacion, sale del ciclo y se pasa al total procesado
-            if (i == estaciones.size() - 1) {
-                bolitasProcesadas += bolitas.size();
-            } else {
-                // sino, se las pasa a la siguiente estacion
-                estaciones.get(i + 1).recibirBolitas(bolitas);
-            }
         }
         // se guardan las bolitas procesadas en cada ronda para graficar el throughput
         historialDeBolitasProcesadas.add(bolitasProcesadas);
