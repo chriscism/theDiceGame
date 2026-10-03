@@ -109,4 +109,6 @@ public class Controlador {
     public List<Integer> getHistorialDeBolitasProcesadas(){
         return  historialDeBolitasProcesadas;
     }
+
+
 }
