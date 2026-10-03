@@ -27,7 +27,7 @@ public class GraficaActivity extends Stage {
 
     public GraficaActivity(List<EstacionDeTrabajo> estaciones){
         this.estaciones = estaciones;
-        graficoDeBarras.setTitle("Gráficas de actividad por estaciones");
+
         BorderPane layout = new BorderPane();
         layout.setStyle("-fx-background-color: #d1cbbd;");
         CategoryAxis ejeX = new CategoryAxis();
@@ -36,6 +36,7 @@ public class GraficaActivity extends Stage {
         ejeY.setLabel("Número");
 
         graficoDeBarras = new BarChart<>(ejeX, ejeY);
+        graficoDeBarras.setTitle("Gráficas de actividad por estaciones");
         graficoDeBarras.setLegendVisible(false);
         graficoDeBarras.setStyle("-fx-bar-fill: #00bfff;"); // Barras azules
 
