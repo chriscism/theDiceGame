@@ -61,7 +61,13 @@ public class Controlador {
                 estacionActual.recibirBolitas(bolitasInfinitas);
             }
             List<ObjetoDeTrabajo> bolitas = estacionActual.pasarBolitas(bolitasAPasar);
-
+            int cantidadMoved = bolitas.size();
+            estacionActual.registrarActividad(bolitasAPasar, cantidadMoved);
+            if (i == estaciones.size() - 1) {
+                bolitasProcesadas += cantidadMoved;
+            } else {
+                estaciones.get(i + 1).recibirBolitas(bolitas);
+            }
             // como es la ultima estacion, sale del ciclo y se pasa al total procesado
             if (i == estaciones.size() - 1) {
                 bolitasProcesadas += bolitas.size();
