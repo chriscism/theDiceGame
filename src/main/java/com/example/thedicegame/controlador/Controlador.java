@@ -13,11 +13,13 @@ public class Controlador {
     private int round;
     //estas son los dados que puedo mover
     private int dadosDisponiblesParaAsignar;
+    private List<Integer> historialDeBolitasProcesadas;
 
     public Controlador() {
         estaciones = new ArrayList<>();
         bolitasProcesadas = 0;
         round = 0;
+        historialDeBolitasProcesadas = new ArrayList<>();
         dadosDisponiblesParaAsignar = 0; // en la primera ronda todos los dados estan asignados en una estacion particular
         for (int i = 0; i < 10; i++) {
             estaciones.add(new EstacionDeTrabajo());
@@ -68,6 +70,8 @@ public class Controlador {
                 estaciones.get(i + 1).recibirBolitas(bolitas);
             }
         }
+        // se guardan las bolitas procesadas en cada ronda para graficar el throughput
+        historialDeBolitasProcesadas.add(bolitasProcesadas);
     }
 
     public List<EstacionDeTrabajo> getEstaciones() {
