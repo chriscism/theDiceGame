@@ -127,7 +127,7 @@ public class GraficaActivity extends Stage {
 
         if (conteoDatos > 0) {
             double promedioDatos = sumaTotal / conteoDatos;
-            promedio.setText(String.format("Average\n%.1f", promedio));
+            promedio.setText(String.format("Average\n%.1f", promedioDatos));
         }
     }
 }
