@@ -1,5 +1,6 @@
 package com.example.thedicegame.vista;
 
+import com.example.thedicegame.Graficas.GraficaActivity;
 import com.example.thedicegame.Graficas.GraficaThroughput;
 import com.example.thedicegame.controlador.Controlador;
 import com.example.thedicegame.modelo.Dado;
@@ -57,6 +58,12 @@ public class VistaJuego extends BorderPane {
         btnThroughput.setOnAction(event -> {
             if(controlador.yaAcabo()){
                 GraficaThroughput grafica = new GraficaThroughput(controlador.getHistorialDeBolitasProcesadas());
+                grafica.show();
+            }
+        });
+        btnActivity.setOnAction(event -> {
+            if(controlador.yaAcabo()){
+                GraficaActivity grafica = new GraficaActivity(controlador.getEstaciones());
                 grafica.show();
             }
         });
