@@ -6,6 +6,9 @@ import java.util.List;
 public class EstacionDeTrabajo {
     private ColaCircular<ObjetoDeTrabajo> estacion;
     private ArrayList<Dado> dados;
+    // para grafica de activity
+    private List<Integer> historialRolled = new ArrayList<>();
+    private List<Integer> historialMoved = new ArrayList<>();
 
     public EstacionDeTrabajo(){
         estacion = new ColaCircular<>(70);
