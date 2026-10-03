@@ -16,6 +16,17 @@ public class EstacionDeTrabajo {
         dados.add(new Dado());
     }
 
+    public void registrarActividad(int rolled, int moved) {
+        historialRolled.add(rolled);
+        historialMoved.add(moved);
+    }
+
+    public List<Integer> getHistorialRolled() {
+        return historialRolled;
+    }
+    public List<Integer> getHistorialMoved() {
+        return historialMoved;
+    }
 
 
     public ColaCircular<ObjetoDeTrabajo> getEstacion() {
