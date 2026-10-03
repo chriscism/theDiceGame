@@ -13,10 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.List;
 
-public class GraficaActivity {
+public class GraficaActivity extends Stage {
     private List<EstacionDeTrabajo> estaciones;
     private BarChart<String, Number> graficoDeBarras;
     private Label promedio;
