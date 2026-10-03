@@ -106,4 +106,7 @@ public class Controlador {
         return round >= 20;
     }
 
+    public List<Integer> getHistorialDeBolitasProcesadas(){
+        return  historialDeBolitasProcesadas;
+    }
 }
